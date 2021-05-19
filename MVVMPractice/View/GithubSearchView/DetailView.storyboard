@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DetailViewController" customModule="MVVMPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXr-NE-VKV">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="giT-nH-igS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="4"/>
+                            </progressView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="giT-nH-igS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="8hP-rr-gci"/>
+                            <constraint firstItem="fXr-NE-VKV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CKY-MR-QxA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="giT-nH-igS" secondAttribute="trailing" id="EGj-38-p4n"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="fXr-NE-VKV" secondAttribute="bottom" id="MEB-72-Xfs"/>
+                            <constraint firstItem="giT-nH-igS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="VXy-oL-Owj"/>
+                            <constraint firstItem="fXr-NE-VKV" firstAttribute="top" secondItem="giT-nH-igS" secondAttribute="bottom" id="eSr-T5-nu4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fXr-NE-VKV" secondAttribute="trailing" id="g53-Pb-oCi"/>
+                            <constraint firstItem="fXr-NE-VKV" firstAttribute="top" secondItem="giT-nH-igS" secondAttribute="bottom" id="jee-Ag-0CY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressView" destination="giT-nH-igS" id="rh9-TU-DDF"/>
+                        <outlet property="webView" destination="fXr-NE-VKV" id="5Do-Il-JoQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="40"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

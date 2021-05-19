@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3475AFE426555F1D0082924E /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3475AFE326555F1D0082924E /* DetailViewModel.swift */; };
 		34D304842652AFB800A2AA1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304832652AFB800A2AA1B /* AppDelegate.swift */; };
 		34D304882652AFB800A2AA1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304872652AFB800A2AA1B /* ViewController.swift */; };
 		34D3048D2652AFC100A2AA1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D3048C2652AFC100A2AA1B /* Assets.xcassets */; };
@@ -28,6 +29,8 @@
 		34D304D52653FEC700A2AA1B /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304D42653FEC700A2AA1B /* Repository.swift */; };
 		34D304D72654045000A2AA1B /* GithubApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304D62654044F00A2AA1B /* GithubApiModel.swift */; };
 		34D304E02654EA7E00A2AA1B /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304DF2654EA7E00A2AA1B /* Cell.swift */; };
+		34D304E226555A7400A2AA1B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304E126555A7300A2AA1B /* DetailViewController.swift */; };
+		34D304E626555AF200A2AA1B /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D304E526555AF200A2AA1B /* DetailView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3475AFE326555F1D0082924E /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		34D304802652AFB800A2AA1B /* MVVMPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D304832652AFB800A2AA1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34D304872652AFB800A2AA1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		34D304D42653FEC700A2AA1B /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		34D304D62654044F00A2AA1B /* GithubApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubApiModel.swift; sourceTree = "<group>"; };
 		34D304DF2654EA7E00A2AA1B /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		34D304E126555A7300A2AA1B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		34D304E526555AF200A2AA1B /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3475AFE526555F240082924E /* GithubSearchViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				34D304D22652C73000A2AA1B /* GithubSearchViewModel.swift */,
+				3475AFE326555F1D0082924E /* DetailViewModel.swift */,
+			);
+			path = GithubSearchViewModel;
+			sourceTree = "<group>";
+		};
 		34D304772652AFB800A2AA1B = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +185,7 @@
 			children = (
 				34D304C22652B0F100A2AA1B /* BaseViewController.swift */,
 				34D304BB2652B07700A2AA1B /* CountViewController.swift */,
-				34D304D02652C0A800A2AA1B /* GithubSearchViewController.swift */,
+				34D304E326555A7A00A2AA1B /* GithubSearchViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -179,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				34D304B92652B06D00A2AA1B /* CounterViewModel.swift */,
-				34D304D22652C73000A2AA1B /* GithubSearchViewModel.swift */,
+				3475AFE526555F240082924E /* GithubSearchViewModel */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -198,10 +213,28 @@
 			children = (
 				34D304C72652B23500A2AA1B /* BaseView.storyboard */,
 				34D304C52652B12F00A2AA1B /* CountView.storyboard */,
-				34D304CE2652C04B00A2AA1B /* GithubSearchView.storyboard */,
-				34D304DF2654EA7E00A2AA1B /* Cell.swift */,
+				34D304E426555ACE00A2AA1B /* GithubSearchView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		34D304E326555A7A00A2AA1B /* GithubSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				34D304D02652C0A800A2AA1B /* GithubSearchViewController.swift */,
+				34D304E126555A7300A2AA1B /* DetailViewController.swift */,
+			);
+			path = GithubSearchViewController;
+			sourceTree = "<group>";
+		};
+		34D304E426555ACE00A2AA1B /* GithubSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				34D304DF2654EA7E00A2AA1B /* Cell.swift */,
+				34D304CE2652C04B00A2AA1B /* GithubSearchView.storyboard */,
+				34D304E526555AF200A2AA1B /* DetailView.storyboard */,
+			);
+			path = GithubSearchView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +351,7 @@
 			files = (
 				34D304CF2652C04B00A2AA1B /* GithubSearchView.storyboard in Resources */,
 				34D304C82652B23500A2AA1B /* BaseView.storyboard in Resources */,
+				34D304E626555AF200A2AA1B /* DetailView.storyboard in Resources */,
 				34D304902652AFC100A2AA1B /* LaunchScreen.storyboard in Resources */,
 				34D3048D2652AFC100A2AA1B /* Assets.xcassets in Resources */,
 				34D304C62652B12F00A2AA1B /* CountView.storyboard in Resources */,
@@ -348,11 +382,13 @@
 				34D304882652AFB800A2AA1B /* ViewController.swift in Sources */,
 				34D304BA2652B06D00A2AA1B /* CounterViewModel.swift in Sources */,
 				34D304D12652C0A800A2AA1B /* GithubSearchViewController.swift in Sources */,
+				34D304E226555A7400A2AA1B /* DetailViewController.swift in Sources */,
 				34D304B52652B00900A2AA1B /* Router.swift in Sources */,
 				34D304E02654EA7E00A2AA1B /* Cell.swift in Sources */,
 				34D304D32652C73000A2AA1B /* GithubSearchViewModel.swift in Sources */,
 				34D304842652AFB800A2AA1B /* AppDelegate.swift in Sources */,
 				34D304D72654045000A2AA1B /* GithubApiModel.swift in Sources */,
+				3475AFE426555F1D0082924E /* DetailViewModel.swift in Sources */,
 				34D304D52653FEC700A2AA1B /* Repository.swift in Sources */,
 				34D304BC2652B07700A2AA1B /* CountViewController.swift in Sources */,
 				34D304C32652B0F100A2AA1B /* BaseViewController.swift in Sources */,

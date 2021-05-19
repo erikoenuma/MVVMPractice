@@ -16,6 +16,7 @@ final class GithubSearchViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!{
         didSet{
+            tableView.delegate = self
             tableView.dataSource = self
             tableView.register(Cell.self, forCellReuseIdentifier: Cell.identifier)
         }
@@ -57,8 +58,14 @@ extension GithubSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath)
         cell.textLabel?.text = viewModel.repositories[indexPath.row].fullName
-        cell.detailTextLabel?.text = viewModel.repositories[indexPath.row].htmlUrl
+        cell.detailTextLabel?.text = viewModel.repositories[indexPath.row].htmlUrl.absoluteString
         return cell
     }
+}
+
+extension GithubSearchViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Router.shared.showDetailView(from: self, repository: viewModel.repositories[indexPath.row])
+    }
 }

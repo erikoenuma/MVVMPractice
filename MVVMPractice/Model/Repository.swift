@@ -9,12 +9,12 @@
 import Foundation
 
 struct Repository: Codable{
-    let items: [items]
+    let items: [GithubRepository]
 }
 
-struct items: Codable{
+struct GithubRepository: Codable{
     let fullName: String
-    let htmlUrl: String
+    let htmlUrl: URL
     
     enum CodingKeys: String, CodingKey{
         case fullName = "full_name"

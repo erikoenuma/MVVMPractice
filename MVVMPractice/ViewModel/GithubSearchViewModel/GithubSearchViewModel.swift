@@ -18,7 +18,7 @@ protocol GithubSearchViewModelInput {
 protocol GithubSearchViewModelOutput {
     //Output: githubRepositoryの中身が変更された通知、中身
     var repositoryChanged: Observable<Void> { get }
-    var repositories: [items] { get }
+    var repositories: [GithubRepository] { get }
 }
 
 final class GithubSearchViewModel: GithubSearchViewModelInput, GithubSearchViewModelOutput {
@@ -35,7 +35,7 @@ final class GithubSearchViewModel: GithubSearchViewModelInput, GithubSearchViewM
     private let _repositoryChanged = PublishRelay<Void>()
     lazy var repositoryChanged: Observable<Void> = _repositoryChanged.asObservable()
     
-    private (set) var repositories: [items] = []
+    private (set) var repositories: [GithubRepository] = []
     
     init() {
         

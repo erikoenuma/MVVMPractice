@@ -13,7 +13,7 @@ final class GithubApiModel {
     static let shared = GithubApiModel()
     private init () {}
     
-    func request(searchWord: String, completion: @escaping(Result<[items], Error>)->Void) {
+    func request(searchWord: String, completion: @escaping(Result<[GithubRepository], Error>)->Void) {
         
         guard let url = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)") else { return }
         let task: URLSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -33,7 +33,7 @@ final class GithubApiModel {
 extension GithubApiModel: ReactiveCompatible{}
 //Reactive Programmingを行うための拡張
 extension Reactive where Base: GithubApiModel {
-    func request (searchWord:String) -> Observable<[items]> {
+    func request (searchWord:String) -> Observable<[GithubRepository]> {
         return Observable.create { observer in
             GithubApiModel.shared.request(searchWord: searchWord) { result in
                 switch result {

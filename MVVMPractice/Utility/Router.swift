@@ -33,6 +33,13 @@ final class Router {
         show(from: from, to: vc)
     }
     
+    func showDetailView(from: UIViewController, repository: GithubRepository) {
+        let vc = DetailViewController.makeFromStoryboard()
+        let viewModel = DetailViewModel(repository: repository)
+        vc.inject(viewModel: viewModel)
+        show(from: from, to: vc)
+    }
+    
     private func show(from: UIViewController, to: UIViewController, completion:(() -> Void)? = nil){
         if let nav = from.navigationController {
             nav.pushViewController(to, animated: true)
