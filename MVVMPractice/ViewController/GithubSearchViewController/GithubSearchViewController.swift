@@ -40,8 +40,11 @@ final class GithubSearchViewController: UIViewController {
     private func bindOutputStream() {
         //repositoryの中身が変わったらtableViewをreloadする
         output.repositoryChanged.observe(on: MainScheduler.instance)
-            .bind { _ in self.tableView.reloadData() }
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+            }, onError: { error in
+                print(error.localizedDescription)
+            }).disposed(by: disposeBag)
     }
     
     static func makeFromStoryboard() -> GithubSearchViewController {
@@ -52,7 +55,7 @@ final class GithubSearchViewController: UIViewController {
 extension GithubSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.repositories.count
+        output.repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,6 +69,6 @@ extension GithubSearchViewController: UITableViewDataSource {
 extension GithubSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Router.shared.showDetailView(from: self, repository: viewModel.repositories[indexPath.row])
+        Router.shared.showDetailView(from: self, repository: output.repositories[indexPath.row])
     }
 }

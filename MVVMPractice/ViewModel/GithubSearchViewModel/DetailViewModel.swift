@@ -20,8 +20,8 @@ protocol DetailViewModelOutput {
 final class DetailViewModel: DetailViewModelOutput {
     
     /*Outputに関する記述*/
-    var request: URLRequest
-    var navigationBarTitle: Observable<String>
+    let request: URLRequest
+    let navigationBarTitle: Observable<String>
     
     init(repository: GithubRepository) {
         
