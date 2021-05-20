@@ -18,7 +18,7 @@ protocol GithubSearchViewModelInput {
 protocol GithubSearchViewModelOutput {
     //Output: githubRepositoryの中身が変更された通知、中身
     var repositoryChanged: Observable<Void> { get }
-    var repositories: [items] { get }
+    var repositories: [GithubRepository] { get }
 }
 
 final class GithubSearchViewModel: GithubSearchViewModelInput, GithubSearchViewModelOutput {
@@ -26,16 +26,17 @@ final class GithubSearchViewModel: GithubSearchViewModelInput, GithubSearchViewM
     private let disposeBag = DisposeBag()
     /*Inputに関する記述*/
     private let _searchText = PublishRelay<String?>()
-    lazy var searchTextObserver: AnyObserver<String?> = .init { event in
+    //これweak selfにしてないせいで循環参照して時間取られました。反省。
+    lazy var searchTextObserver: AnyObserver<String?> = .init { [weak self] event in
         guard let element = event.element else { return }
-        self._searchText.accept(element)
+        self?._searchText.accept(element)
     }
     
     /*Outputに関する記述*/
     private let _repositoryChanged = PublishRelay<Void>()
     lazy var repositoryChanged: Observable<Void> = _repositoryChanged.asObservable()
     
-    private (set) var repositories: [items] = []
+    private (set) var repositories: [GithubRepository] = []
     
     init() {
         
@@ -47,8 +48,8 @@ final class GithubSearchViewModel: GithubSearchViewModelInput, GithubSearchViewM
             //アンラップ
             .filterNil()
             .filter{ $0.isNotEmpty }
-            .flatMapLatest { searchText in
-            GithubApiModel.shared.rx.request(searchWord: searchText)
+            .flatMapLatest { [weak self] searchText in
+                GithubApiModel.shared.rx.request(searchWord: searchText)
                 .map { [weak self] repositories -> Void in
                     self?.repositories = repositories
                     return
