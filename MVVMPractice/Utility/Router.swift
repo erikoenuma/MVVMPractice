@@ -40,6 +40,11 @@ final class Router {
         show(from: from, to: vc)
     }
     
+    func showLoginView(from: UIViewController){
+        let vc = LoginViewController.makeFromStoryboard()
+        show(from: from, to: vc)
+    }
+    
     private func show(from: UIViewController, to: UIViewController, completion:(() -> Void)? = nil){
         if let nav = from.navigationController {
             nav.pushViewController(to, animated: true)

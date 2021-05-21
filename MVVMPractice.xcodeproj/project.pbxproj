@@ -31,6 +31,12 @@
 		34D304E02654EA7E00A2AA1B /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304DF2654EA7E00A2AA1B /* Cell.swift */; };
 		34D304E226555A7400A2AA1B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D304E126555A7300A2AA1B /* DetailViewController.swift */; };
 		34D304E626555AF200A2AA1B /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D304E526555AF200A2AA1B /* DetailView.storyboard */; };
+		34EE2FED2656A583006306B8 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34EE2FEC2656A583006306B8 /* LoginView.storyboard */; };
+		34EE2FEF2656AE89006306B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EE2FEE2656AE89006306B8 /* LoginViewController.swift */; };
+		34EE2FF12656AF79006306B8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EE2FF02656AF79006306B8 /* LoginViewModel.swift */; };
+		34EE2FF42656D198006306B8 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EE2FF32656D198006306B8 /* ValidationResult.swift */; };
+		34EE2FF626578FB4006306B8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EE2FF526578FB4006306B8 /* StringExtension.swift */; };
+		34EE2FFA26580729006306B8 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EE2FF926580729006306B8 /* UILabelExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +84,12 @@
 		34D304DF2654EA7E00A2AA1B /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		34D304E126555A7300A2AA1B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		34D304E526555AF200A2AA1B /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		34EE2FEC2656A583006306B8 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
+		34EE2FEE2656AE89006306B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		34EE2FF02656AF79006306B8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		34EE2FF32656D198006306B8 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		34EE2FF526578FB4006306B8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		34EE2FF926580729006306B8 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +198,7 @@
 				34D304C22652B0F100A2AA1B /* BaseViewController.swift */,
 				34D304BB2652B07700A2AA1B /* CountViewController.swift */,
 				34D304E326555A7A00A2AA1B /* GithubSearchViewController */,
+				34EE2FEE2656AE89006306B8 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -195,6 +208,7 @@
 			children = (
 				34D304B92652B06D00A2AA1B /* CounterViewModel.swift */,
 				3475AFE526555F240082924E /* GithubSearchViewModel */,
+				34EE2FF02656AF79006306B8 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -204,6 +218,9 @@
 			children = (
 				34D304D42653FEC700A2AA1B /* Repository.swift */,
 				34D304D62654044F00A2AA1B /* GithubApiModel.swift */,
+				34EE2FF32656D198006306B8 /* ValidationResult.swift */,
+				34EE2FF526578FB4006306B8 /* StringExtension.swift */,
+				34EE2FF926580729006306B8 /* UILabelExtensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +231,7 @@
 				34D304C72652B23500A2AA1B /* BaseView.storyboard */,
 				34D304C52652B12F00A2AA1B /* CountView.storyboard */,
 				34D304E426555ACE00A2AA1B /* GithubSearchView */,
+				34EE2FEC2656A583006306B8 /* LoginView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +371,7 @@
 				34D304C82652B23500A2AA1B /* BaseView.storyboard in Resources */,
 				34D304E626555AF200A2AA1B /* DetailView.storyboard in Resources */,
 				34D304902652AFC100A2AA1B /* LaunchScreen.storyboard in Resources */,
+				34EE2FED2656A583006306B8 /* LoginView.storyboard in Resources */,
 				34D3048D2652AFC100A2AA1B /* Assets.xcassets in Resources */,
 				34D304C62652B12F00A2AA1B /* CountView.storyboard in Resources */,
 			);
@@ -379,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34EE2FEF2656AE89006306B8 /* LoginViewController.swift in Sources */,
 				34D304882652AFB800A2AA1B /* ViewController.swift in Sources */,
 				34D304BA2652B06D00A2AA1B /* CounterViewModel.swift in Sources */,
 				34D304D12652C0A800A2AA1B /* GithubSearchViewController.swift in Sources */,
@@ -386,9 +406,13 @@
 				34D304B52652B00900A2AA1B /* Router.swift in Sources */,
 				34D304E02654EA7E00A2AA1B /* Cell.swift in Sources */,
 				34D304D32652C73000A2AA1B /* GithubSearchViewModel.swift in Sources */,
+				34EE2FF626578FB4006306B8 /* StringExtension.swift in Sources */,
+				34EE2FF12656AF79006306B8 /* LoginViewModel.swift in Sources */,
 				34D304842652AFB800A2AA1B /* AppDelegate.swift in Sources */,
 				34D304D72654045000A2AA1B /* GithubApiModel.swift in Sources */,
+				34EE2FF42656D198006306B8 /* ValidationResult.swift in Sources */,
 				3475AFE426555F1D0082924E /* DetailViewModel.swift in Sources */,
+				34EE2FFA26580729006306B8 /* UILabelExtensions.swift in Sources */,
 				34D304D52653FEC700A2AA1B /* Repository.swift in Sources */,
 				34D304BC2652B07700A2AA1B /* CountViewController.swift in Sources */,
 				34D304C32652B0F100A2AA1B /* BaseViewController.swift in Sources */,

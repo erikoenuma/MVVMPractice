@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="M4Z-R3-T1Z">
-                                <rect key="frame" x="153" y="403" width="108" height="90"/>
+                                <rect key="frame" x="153" y="373" width="108" height="150"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yH-vF-Zxp">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
@@ -26,6 +26,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9T-V8-oQv">
                                         <rect key="frame" x="0.0" y="60" width="108" height="30"/>
                                         <state key="normal" title="GithubSearch"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbz-0h-18G">
+                                        <rect key="frame" x="0.0" y="120" width="108" height="30"/>
+                                        <state key="normal" title="LoginValidation"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -41,6 +45,7 @@
                     <connections>
                         <outlet property="countAppButton" destination="6yH-vF-Zxp" id="RAL-Cs-HoP"/>
                         <outlet property="githubSearchButton" destination="t9T-V8-oQv" id="O7F-80-qBi"/>
+                        <outlet property="loginValidationButton" destination="mbz-0h-18G" id="2w7-CV-lXb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
