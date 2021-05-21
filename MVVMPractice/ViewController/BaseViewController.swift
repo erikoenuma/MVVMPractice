@@ -13,6 +13,7 @@ final class BaseViewController: UIViewController {
 
     @IBOutlet private weak var countAppButton: UIButton!
     @IBOutlet private weak var githubSearchButton: UIButton!
+    @IBOutlet private weak var loginValidationButton: UIButton!
     
     private let disposeBag = DisposeBag()
     
@@ -33,6 +34,12 @@ final class BaseViewController: UIViewController {
             .asSignal()
             .emit(onNext: {_ in
                 Router.shared.showGithubSearchView(from: self)
+            }).disposed(by: disposeBag)
+        
+        loginValidationButton.rx.tap
+            .asSignal()
+            .emit(onNext: { _ in
+                Router.shared.showLoginView(from: self)
             }).disposed(by: disposeBag)
     }
     
