@@ -9,15 +9,13 @@ import UIKit
 import WebKit
 import RxCocoa
 import RxSwift
-import RxOptional
+import RxDataSources
 
 final class GithubSearchViewController: UIViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!{
         didSet{
-            tableView.delegate = self
-            tableView.dataSource = self
             tableView.register(Cell.self, forCellReuseIdentifier: Cell.identifier)
         }
     }
@@ -30,45 +28,36 @@ final class GithubSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindInputStream()
-        bindOutputStream()
+        setUpTableView()
     }
     
     private func bindInputStream() {
         searchBar.rx.text.bind(to: input.searchTextObserver).disposed(by: disposeBag)
     }
     
-    private func bindOutputStream() {
-        //repositoryの中身が変わったらtableViewをreloadする
-        output.repositoryChanged.observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.tableView.reloadData()
-            }, onError: { error in
-                print(error.localizedDescription)
+    private func setUpTableView() {
+        
+        //RxDataSources
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel>(configureCell: { _, tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath)
+            cell.textLabel?.text = item.fullName
+            cell.detailTextLabel?.text = item.htmlUrl.absoluteString
+            return cell
+        })
+        
+        //dateRelayの変更を感知してdataSourceにデータを流す
+        output.dataRelay.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        //tableViewのセルをタップした時の処理
+        tableView.rx.modelSelected(GithubRepository.self)
+            .subscribe(onNext: { item in
+                Router.shared.showDetailView(from: self, repository: item)
             }).disposed(by: disposeBag)
     }
     
     static func makeFromStoryboard() -> GithubSearchViewController {
         UIStoryboard(name: "GithubSearchView", bundle: nil).instantiateInitialViewController() as! GithubSearchViewController
-    }
-}
-
-extension GithubSearchViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        output.repositories.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath)
-        cell.textLabel?.text = viewModel.repositories[indexPath.row].fullName
-        cell.detailTextLabel?.text = viewModel.repositories[indexPath.row].htmlUrl.absoluteString
-        return cell
-    }
-}
-
-extension GithubSearchViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Router.shared.showDetailView(from: self, repository: output.repositories[indexPath.row])
     }
 }
